@@ -4,31 +4,30 @@ from distutils.core import Command, setup
 import unittest
 
 UNITTESTS = [
-		"tests", 
-	]
+    "tests",
+  ]
 
 class TestCommand(Command):
-	user_options = [ ]
+  user_options = [ ]
 
-	def initialize_options(self):
-		pass
+  def initialize_options(self):
+    pass
 
-	def finalize_options(self):
-		pass
+  def finalize_options(self):
+    pass
 
-	def run(self):
-		suite = unittest.TestSuite()
+  def run(self):
+    suite = unittest.TestSuite()
 
-		suite.addTests( 
-			unittest.defaultTestLoader.loadTestsFromNames( 
-								UNITTESTS ) )
+    suite.addTests(
+      unittest.defaultTestLoader.loadTestsFromNames(
+                UNITTESTS ) )
 
-		result = unittest.TextTestRunner(verbosity=2).run(suite)
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
 
 setup(name='Unidecode',
-      version='0.04.6',
+      version='0.4.9',
       description='US-ASCII transliterations of Unicode text',
-      url='http://code.zemanta.com/tsolc/unidecode/',
       license='Perl',
       long_description="""
 It often happens that you have non-Roman text data in Unicode, but
@@ -40,15 +39,15 @@ that's nearly useless to the user who actually wants to read what
 the text says.
 
 What Unidecode provides is a function, 'unidecode(...)' that
-takes Unicode data and tries to represent it in ASCII characters 
-(i.e., the universally displayable characters between 0x00 and 0x7F). 
-The representation is almost always an attempt at transliteration 
--- i.e., conveying, in Roman letters, the pronunciation expressed by 
+takes Unicode data and tries to represent it in ASCII characters
+(i.e., the universally displayable characters between 0x00 and 0x7F).
+The representation is almost always an attempt at transliteration
+-- i.e., conveying, in Roman letters, the pronunciation expressed by
 the text in some other writing system.
 
 For example 'unidecode(u"\u5317\u4EB0")' returns 'Bei Jing'.
 
-This is a Python port of Text::Unidecode Perl module by 
+This is a Python port of Text::Unidecode Perl module by
 Sean M. Burke <sburke@cpan.org>.
       """,
       author='Tomaz Solc',
@@ -58,5 +57,6 @@ Sean M. Burke <sburke@cpan.org>.
 
       provides = [ 'unidecode' ],
 
-      cmdclass = { 'test': TestCommand }
+      cmdclass = { 'test': TestCommand },
+      url = 'https://github.com/iki/unidecode/'
 )
